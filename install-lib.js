@@ -71,10 +71,11 @@ if (libName) {
             packagesToSymlink.forEach(({ pkg, source }) => {
                 const dest = path.join(targetDir, pkg);
                 if (fs.existsSync(source)) {
-                    const absoluteSource = path.resolve(source); // Use absolute path
+                    // Calculate relative path from dest folder to source
+                    const relativeSource = path.relative(targetDir, source);
                     try {
                         if (fs.existsSync(dest)) fs.unlinkSync(dest);
-                        fs.symlinkSync(absoluteSource, dest, 'dir');
+                        fs.symlinkSync(relativeSource, dest, 'dir');
                     } catch (e) {
                         console.warn(`Warning: Failed to symlink ${pkg}: ${e.message}`);
                     }
