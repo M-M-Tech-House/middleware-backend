@@ -3,7 +3,25 @@
     "builds": [
         {
             "src": "index.js",
-            "use": "@vercel/node"
+            "use": "@vercel/node",
+            "config": {
+                "includeFiles": [
+                    "node_modules/@M-M-Tech-House/**",
+                    "node_modules/@enode-restaurant/**",
+                    "node_modules/bcryptjs/**",
+                    "node_modules/bson/**",
+                    "node_modules/cors/**",
+                    "node_modules/dotenv/**",
+                    "node_modules/jsonwebtoken/**",
+                    "node_modules/luxon/**",
+                    "node_modules/mongoose/**",
+                    "node_modules/mongoose-sequence/**",
+                    "node_modules/morgan/**",
+                    "node_modules/pdfkit/**",
+                    "node_modules/xlsx/**",
+                    "node_modules/zod/**"
+                ]
+            }
         }
     ],
     "routes": [
