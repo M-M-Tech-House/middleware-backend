@@ -1,0 +1,16 @@
+{
+    "version": 2,
+    "framework": "vite",
+    "installCommand": "sh install.sh",
+    "buildCommand": "vite build",
+    "outputDirectory": "dist",
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/index.html"
+        }
+    ],
+    "env": {
+        "VITE_FRONTEND_LIB": "@M-M-Tech-House/enode-restaurant-package-ui"
+    }
+}
