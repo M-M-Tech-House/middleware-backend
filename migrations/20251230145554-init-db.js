@@ -5,8 +5,6 @@ module.exports = {
    * @returns {Promise<void>}
    */
   async up(db, client) {
-    await client.connect();
-    const db = client.db(dbName);
 
     // === sale_states ===
     await db.collection("sale_states").insertMany([
