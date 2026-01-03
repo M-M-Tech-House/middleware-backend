@@ -27,6 +27,16 @@ module.exports = {
       { name: "Tarjeta Débito" }
     ]);
 
+    // === cateries ===
+    await db.collection("categories").insertMany([
+      { name: "Entradas" },
+    ]);
+
+    // === units ===
+    await db.collection("units").insertMany([
+      { name: "Unidad", symbol: "Ud" },
+    ]);
+
     console.log("✅ Datos insertados correctamente");
 
   },
