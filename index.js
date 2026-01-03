@@ -1,6 +1,13 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3100;
+
+// Enable CORS at the host level for all routes
+app.use(cors({
+    origin: process.env.API_CORS_ORIGIN === '*' ? '*' : (process.env.API_CORS_ORIGIN ? process.env.API_CORS_ORIGIN.split(',') : '*'),
+    credentials: process.env.API_CORS_CREDENTIALS === 'true'
+}));
 
 // Get the library name from environment variable
 let libName = process.env.API_LIB;
@@ -53,10 +60,11 @@ try {
         }
     }
 
-    // Mount the middleware at the root
-    app.use('/', middlewareToMount);
+    // Mount the middleware at the configured API root (using API_HOST per user request)
+    const apiPrefix = process.env.API_HOST || '/';
+    app.use(apiPrefix, middlewareToMount);
 
-    console.log(`Successfully mounted "${libName}" as middleware.`);
+    console.log(`Successfully mounted "${libName}" as middleware at prefix "${apiPrefix}".`);
 
 } catch (error) {
     console.error(`Failed to load library "${libName}".`);

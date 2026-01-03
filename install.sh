@@ -4,7 +4,7 @@
 if [ -f ../.env ]; then
   echo "Loading environment variables from ../.env"
   set -a # automatically export all variables
-  source ../.env
+  source .env
   set +a
 else
   echo "Warning: ../.env file not found."
