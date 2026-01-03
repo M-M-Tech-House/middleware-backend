@@ -9,6 +9,9 @@ app.use(cors({
     credentials: process.env.API_CORS_CREDENTIALS === 'true'
 }));
 
+// Parse JSON bodies
+app.use(express.json({ limit: '10mb' }));
+
 // Endpoint to check database statistics
 app.get('/system/stats', async (req, res) => {
     try {
