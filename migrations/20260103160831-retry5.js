@@ -9,7 +9,9 @@ module.exports = {
     // See https://github.com/seppevs/migrate-mongo/#creating-a-new-migration-script
     // Example:
     // DROP all colections
-    await db.dropDatabase();
+    for (const collection of await db.listCollections().toArray()) {
+      await db.collection(collection.name).drop();
+    }
 
   },
 
