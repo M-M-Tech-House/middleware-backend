@@ -2,7 +2,7 @@
 
 const config = {
   mongodb: {
-    url: process.env.MONGO_URL || `mongodb://${process.env.ENODE_RESTAURANT_DATABASE_USERNAME}:${process.env.ENODE_RESTAURANT_DATABASE_PASSWORD}@${process.env.ENODE_RESTAURANT_DATABASE_HOST}:${process.env.ENODE_RESTAURANT_DATABASE_PORT || 27017}`,
+    url: process.env.MONGODB_URI || `mongodb://${process.env.ENODE_RESTAURANT_DATABASE_USERNAME}:${process.env.ENODE_RESTAURANT_DATABASE_PASSWORD}@${process.env.ENODE_RESTAURANT_DATABASE_HOST}:${process.env.ENODE_RESTAURANT_DATABASE_PORT || 27017}`,
 
     databaseName: process.env.ENODE_RESTAURANT_DATABASE_NAME || "restaurante",
 
