@@ -33,7 +33,7 @@ module.exports = {
     ]);
 
     // === units ===
-    await db.collection("units").insertMany([
+    await db.collection("unities").insertMany([
       { name: "Unidad", symbol: "Ud" },
     ]);
 
