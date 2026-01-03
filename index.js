@@ -60,8 +60,8 @@ try {
         }
     }
 
-    // Mount the middleware at the configured API root (using API_HOST per user request)
-    const apiPrefix = process.env.API_HOST || '/';
+    // Mount the middleware at the configured API root (using API_PREFIX per user request)
+    const apiPrefix = process.env.API_PREFIX || '/';
     app.use(apiPrefix, middlewareToMount);
 
     console.log(`Successfully mounted "${libName}" as middleware at prefix "${apiPrefix}".`);
