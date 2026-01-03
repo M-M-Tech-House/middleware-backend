@@ -9,6 +9,35 @@ app.use(cors({
     credentials: process.env.API_CORS_CREDENTIALS === 'true'
 }));
 
+// Endpoint to check database statistics
+app.get('/system/stats', async (req, res) => {
+    try {
+        const mongoose = require('mongoose');
+        if (mongoose.connection.readyState !== 1) {
+            return res.status(503).json({
+                error: 'Database not connected',
+                state: mongoose.connection.readyState,
+                hint: 'Waiting for library to initialize connection...'
+            });
+        }
+
+        const collections = await mongoose.connection.db.listCollections().toArray();
+        const stats = [];
+
+        for (const col of collections) {
+            const count = await mongoose.connection.db.collection(col.name).countDocuments();
+            stats.push({ collection: col.name, count });
+        }
+
+        res.json({
+            database: mongoose.connection.name,
+            collections: stats
+        });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+
 // Get the library name from environment variable
 let libName = process.env.API_LIB;
 
