@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const port = process.env.PORT || 3100;
-const apiMiddleware = require('@M-M-Tech-House/enode-restaurant-package/apps/api/');
+const apiMiddleware = require('@M-M-Tech-House/enode-restaurant-package/apps/api');
 
 // Enable CORS at the host level for all routes
 app.use(cors({
