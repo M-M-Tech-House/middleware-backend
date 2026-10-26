@@ -5,4 +5,4 @@ dist/
 .vercel/
 *.log
 .DS_Store
-middleware-frontend/mock-lib/
+.npmrc
